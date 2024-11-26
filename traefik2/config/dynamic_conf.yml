@@ -1,0 +1,66 @@
+http:
+  routers:
+    router0:
+      rule: "Host(`jellyfin.hobozzzx.live`)"
+      #middlewares:
+        #- default-headers
+        #- https-redirectscheme
+      entryPoints:
+        - websecure
+      tls: {}
+        #certresolver: cloudflare
+      service: jellyfin
+    router1:
+      rule: "Host(`qbt.hobozzzx.live`)"
+      #middlewares:
+        #- default-headers
+        #- https-redirectscheme
+      entryPoints:
+        - websecure
+      tls: {}
+        #certresolver: cloudflare
+      service: qbittorrent
+  
+
+  services:
+    jellyfin: 
+      loadBalancer:
+        servers:
+          - url: "http://10.0.0.139:8096"
+        passHostHeader: true
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://10.0.0.139:8080"
+
+  middlewares:
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    default-whitelist:
+      ipAllowList:
+        sourceRange:
+        - "10.0.0.0/8"
+        - "192.168.0.0/16"
+        - "172.16.0.0/12"
+
+    secured:
+      chain:
+        middlewares:
+        - default-whitelist
+        - default-headers
+  
