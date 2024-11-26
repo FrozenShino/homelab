@@ -1,0 +1,57 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/bookmarks
+
+- Social:
+    - Outlook:
+      - abbr: O
+        href: https://outlook.live.com/owa/
+    - Gmail:
+      - abbr: G
+        href: https://mail.google.com/mail/u/0/#all
+    - Google Calendar:
+      - abbr: CAL
+        href: https://calendar.google.com/calendar/u/0/r
+    - Twitter:
+      - abbr: TWT
+        href: https://twitter.com/
+    - /r/pcgaming:
+      - abbr: PC
+        href: https://reddit.com/r/pcgaming
+
+- Entertainment:
+    - YouTube:
+      - abbr: YT
+        href: https://youtube.com/
+    - Twitch:
+      - abbr: TV
+        href: https://www.twitch.tv/directory/following/live
+    - Holodex:
+      - abbr: HOLO
+        href: https://holodex.net/
+
+- Other:
+    - Github:
+      - abbr: GH
+        href: https://github.com/
+    - GOG Account:
+      - abbr: GOG
+        href: https://www.gog.com/account
+    - Steam:
+      - abbr: STM
+        href: https://store.steampowered.com/
+    - IsThereAnyDeal:
+      - abbr: ITAD
+        href: https://isthereanydeal.com/waitlist/
+    - Amazon:
+      - abbr: AMZN
+        href: https://www.amazon.ca/
+    - PCPartPicker:
+      - abbr: PCPP
+        href: https://ca.pcpartpicker.com/list/
+    - Canada Computers:
+      - abbr: CC
+        href: https://www.canadacomputers.com/
+    - Memory Express:
+      - abbr: ME
+        href: https://www.memoryexpress.com/

@@ -1,0 +1,31 @@
+#version: "3.3"
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    networks:
+      - traefik-network
+    labels:
+      - traefik.enable=true
+      #- traefik.http.routers.homepage.rule=Host(`hp.hobozzzx.live`)
+      #- traefik.http.routers.homepage.entrypoints=web
+      #- traefik.http.services.homepage.loadbalancer.server.port=3000
+      - traefik.http.routers.homepage-secure.tls=true
+      - traefik.http.routers.homepage-secure.rule=Host(`homepage.hobozzzx.live`)
+      #- traefik.http.routers.homepage-secure.tls.certresolver=cloudflare
+      - traefik.http.routers.homepage-secure.entrypoints=websecure
+      - traefik.http.services.homepage-secure.loadbalancer.server.port=3000
+    #ports:
+    #  - 3000:3000
+    env_file: .env # use .env
+    volumes:
+      - ./config:/app/config # Make sure your local config directory exists
+      - ./assets:/app/public/images
+      # - /var/run/docker.sock:/var/run/docker.sock # (optional) For docker integrations, see alternative methods
+    environment:
+      PUID: $PUID # read them from .env
+      PGID: $PGID # read them from .env
+    restart: unless-stopped
+networks:
+  traefik-network:
+    external: true

@@ -1,0 +1,69 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Services:
+    
+    - Jellyfin:
+        href: "{{HOMEPAGE_VAR_JELLYFIN_URL}}"
+        description: Jellyfin media library
+        icon: jellyfin.svg
+        widget:
+          type: jellyfin
+          url: "{{HOMEPAGE_VAR_JELLYFIN_IP}}"
+          key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
+          enableBlocks: true # optional, defaults to false
+          enableNowPlaying: true # optional, defaults to true
+          enableUser: true # optional, defaults to false
+          showEpisodeNumber: true # optional, defaults to false
+          expandOneStreamToTwoRows: false # optional, defaults to true
+
+    - Pi-hole:
+        icon: pi-hole.svg
+        href: "{{HOMEPAGE_VAR_PIHOLE_URL}}"
+        description: Pi-hole admin dashboard for DNS
+        widget: 
+          type: pihole
+          url: "{{HOMEPAGE_VAR_PIHOLE_IP}}"
+          version: 5
+          key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
+
+    - Portainer:
+        icon: portainer.svg
+        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+        description: Manage docker containers from a GUI
+        widget:
+          type: portainer
+          url: "{{HOMEPAGE_VAR_PORTAINER_IP}}"
+          env: 2
+          key: "{{HOMEPAGE_VAR_PORTAINER_API_KEY}}"
+
+    - qBittorrent:
+        icon: qbittorrent.svg
+        href: "{{HOMEPAGE_VAR_QBT_URL}}"
+        widget:
+          type: qbittorrent
+          url: "{{HOMEPAGE_VAR_QBT_IP}}"
+          username: "{{HOMEPAGE_VAR_QBITTORRENT_USER}}"
+          password: "{{HOMEPAGE_VAR_QBITTORRENT_PWD}}"
+    
+    - Traefik:
+        icon: traefik-proxy.svg
+        href: "{{HOMEPAGE_VAR_TRAEFIK_URL}}"
+        widget:
+          type: traefik
+          #url: "{{HOMEPAGE_VAR_TRAEFIK_IP}}" #Fails for unknown reasons
+          url: http://traefik:8080
+          username: "{{HOMEPAGE_TRAEFIK_USERNAME}}"
+          password: "{{HOMEPAGE_TRAEFIK_PASSWORD}}"
+    
+    #- Nginx Proxy Manager:
+        #icon: nginx-proxy-manager.svg
+        #href: http://10.0.0.2:81
+        #href: "{{HOMEPAGE_VAR_NPM_URL}}"
+        #widget:
+        #  type: npm
+        #  url: http://10.0.0.2:81
+          #url: "{{HOMEPAGE_VAR_NPM_URL}}"
+        #  username: "{{HOMEPAGE_VAR_NGX_USER}}"
+        #  password: "{{HOMEPAGE_VAR_NGX_PWD}}"
