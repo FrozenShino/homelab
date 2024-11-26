@@ -1,6 +1,13 @@
+!.gitignore
 .env
 *.png
 *.jpg
 *.log
 widgets.yaml
 settings.yaml
+portainer_data/*
+!portainer_data/.placeholder
+traefik2/data/*
+!traefik2/data/.placeholderacmejson
+traefik.yml
+debug.txt
